@@ -1,11 +1,12 @@
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+
 import { Link } from "react-router-dom";
 import logoImg from "../../assets/logo.svg";
 import { FiUser, FiLogIn } from "react-icons/fi";
-import { useState } from "react";
 
 export function Header() {
-  const [signed, setSigned] = useState(true);
-  const [loadingAuth, setLoadingAuth] = useState(false);
+  const { loadingAuth, signed } = useContext(AuthContext);
 
   return (
     <div className="w-full bg-white drop-shadow mb-4">

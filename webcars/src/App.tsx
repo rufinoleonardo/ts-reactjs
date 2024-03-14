@@ -7,6 +7,7 @@ import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 
 import { Layout } from "./components/layout";
+import { Private } from "./routes/Private";
 
 const router = createBrowserRouter([
   {
@@ -14,8 +15,22 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/car/:id", element: <CarDetails /> },
-      { path: "/dashboard", element: <Dashboard /> },
-      { path: "/dashboard/new", element: <NewCar /> },
+      {
+        path: "/dashboard",
+        element: (
+          <Private>
+            <Dashboard />{" "}
+          </Private>
+        ),
+      },
+      {
+        path: "/dashboard/new",
+        element: (
+          <Private>
+            <NewCar />{" "}
+          </Private>
+        ),
+      },
     ],
   },
   { path: "/login", element: <Login /> },
